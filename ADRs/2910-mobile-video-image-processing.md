@@ -1,7 +1,7 @@
 # Mobile Video/Image Processing
 
 ## Context:
-In order to easily share observation footage and images, a user needs to be able to process them on a mobile device. This will allow us to reduce the size of the files and make them easier to share. These video/image editing features include tasks such as trimming, cropping, and rotating.
+In order to easily share observation footage and images, a user needs to be able to process them on a mobile device. This will allow us to reduce the size of the files and make them easier to share. These video/image editing features include tasks such as trimming, cropping, rotating, and frame extraction.
 
 ## Decision:
 To implement video editing in our React Native application for both iOS and Android, we have decided to use the "react-native-video" library for video playback and the "react-native-video-processing" library for video editing, "react-native-image-picker" and "react-native-image-resizer" for image editing.
