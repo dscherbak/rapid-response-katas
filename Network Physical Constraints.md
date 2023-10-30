@@ -21,3 +21,5 @@ Here are the estimated transmission times for sending this message by LoRaWAN ne
 In contrast, for a 3G network, even in the worst-case scenario, it would take up to 2 seconds to transmit such a message with an image.
 
 Based on our research, we have decided to send images instead of videos. This decision is based on our belief that it is crucial for the user to see what has been recorded. When the users have a visual of a captured species, they can make decisions and act based on that information.
+
+Nevertheless, if the camera identifies the species it should be possible to send an event without an image (this feature should be configured per camera).
