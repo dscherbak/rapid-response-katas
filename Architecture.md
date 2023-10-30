@@ -2,77 +2,71 @@
 
 In our pursuit of creating a highly adaptable and flexible software architecture, we've designed a system consisting of six core microservices. Each of these microservices is independently deployable and capable of functioning in isolation. This architecture allows us to seamlessly adapt to changing requirements while maintaining a robust and interconnected system.
 
-![alt text](images/architecture.png)
-
+![Architecture](images/architecture.png)
 
 ## Identity Service
 
-The Identity Service pis responsible for managing user identity and authentication. Its primary purpose is to establish a secure and centralized authentication mechanism.  Additionally, the service manages user access to cameras.
+The Identity Service is responsible for managing user identity and authentication. Its primary purpose is to establish a secure and centralized authentication mechanism. Additionally, the service manages user access to cameras.
 
 **External Dependencies**: None
 
 **Message Handling**:
-
-* Camera Registration Messages: The service processes camera registration messages, which provide camera information. Administrators use this information to grant user access to specific cameras.
+- Camera Registration Messages: The service handles camera registration messages, which provide camera information. Administrators use this information to grant user access to specific cameras.
 
 **Message Generation**:
-
-* New User Registration Message: The Identity Service generates a message when a new user is registered
+- New User Registration Message: The Identity Service generates a message when a new user is registered.
 
 ## Observations Service
 
-The Observations Service is responsible of storing observations, facilitating the labeling of unrecognized species, forwarding selected observations for AI model training, and generating CamTrap DP files.
+The Observations Service is responsible for storing observations and orchestrating the work (sending for labeling, training AI model, or notifications) on those observations.
 
 **External Dependencies**: None
 
-Message Handling:
-
-* New Observation Captured: This message is processed to store the observation, making it available for users to act upon.
-* Unrecognized Species Labeled: The service handles this message to maintain a labelling history for all observations and make labeled observations available to be used in AI model training.
+**Message Handling**:
+- New Observation Captured: All new observations are stored in the service's database.
+- Unrecognized Species Labeled: The service handles this message (reply) to maintain a labeling history for all observations and make labeled observations available for use in AI model training.
 
 **Message Generation**:
-
-* New Observation Captured or Changed (Labeled): The service generates a message when a new observation is captured or when changes are made, such as labeling, ensuring that relevant updates are communicated.
-* Command to Label Unrecognized Species: An outbound message (command) is produced when there's a need to label an unrecognized species using an external service.
-* Command to Utilize New Training Samples: The service generates a message (command) when new training samples are ready for use in constructing a new AI model.
+- New Observation Captured or Changed (Labelled): The service generates a message when a new observation is tracked or when changes to existing ones are made (such as labeling), ensuring that relevant updates are handled by other services (e.g. ENS).
+- Command to Label Unrecognized Species: An outbound message (command) is produced when there's a need to label an unrecognized species using an external service (triggered by the user or system).
+- Command to Generate a New AI Model: The service generates a message (command) when new training samples are ready for constructing a new AI model.
 
 ## Notifications Service
 
-The Notifications Service is dedicated to delivering real-time push notifications to mobile clients, with a primary focus on providing timely updates on observations that users are subscribed to.
+The Notifications Service is dedicated to delivering real-time push notifications to mobile clients, with a primary focus on providing updates on observations that users are subscribed to.
 
 **External Dependencies**: Notification message delivery service
 
 **Message Handling**:
-
-* New Cameras Messages: The service handles these messages to manage subscriptions for new cameras, ensuring that users can receive notifications related to these cameras.
-* New Users: The service manages subscriptions for new users through these messages, ensuring that notifications reach the intended recipients.
-* Observations Captured: To keep users informed, this message is processed to send notifications to all subscribers when new observations are captured.
+- New Camera Added: Stores camera info locally to allow authorized users to subscribe for notifications from that camera.
+- New Users: Stores user info locally to manage subscriptions between users/cameras.
+- Observations Captured: Sends notifications on the captured observation to all subscribed users.
 
 **Message Generation**: None
 
 ## External Labeling Service
 
-The External Labeling Service communicates with external labeling services, such as Wildlife Insights.
+The External Labeling Service communicates with external labeling services, such as Wildlife Insights, TrapTagger, or Trapper.
 
-**External Dependencies**: Wildlife Insights
+**External Dependencies**: Wildlife Insights, TrapTagger, or/and Trapper
 
 **Message Handling**:
-- Unrecognized Species to be Labeled Messages: The service handles these messages, attempting to label species that require identification.
+- Unrecognized Species to be Labeled Message (command): The service handles these messages and tries to get a label for the species from messages that require identification.
 
 **Message Generation**:
-- Labeled species: Labeled Species: When the service successfully labels a species, it generates a message to communicate this valuable information. This ensures that the labeled species is available for further processing within our system.
+- Labeled species: When the service successfully labels a species, it generates a message (reply) with labeled species information.
 
 ## ML Candidates Service
 
-The ML Candidates Service is tasked with establishing communication with external AI model training services, such as Roboflow.
+The ML Candidates Service is responsible for communication with external AI model training services, such as Roboflow, Edge Impulse, or TensorFlow Lite.
 
-**External Dependencies**: Roboflow
+**External Dependencies**: Roboflow, Edge Impulse, or/and TensorFlow Lite
 
 **Message Handling**:
-- New Training Samples are Ready: The service efficiently manages messages indicating that new training samples are prepared and available for use.
+- New Training Samples are Ready: The service manages and generates new AI models based on new training samples.
 
 **Message Generation**:
-- New Trained AI Model: When the service successfully completes the training process and produces a new AI model.
+- New Trained AI Model: When the service successfully completes the training of a new AI model that can be uploaded to cameras.
 
 ## Camera Feed Engine
 
@@ -81,11 +75,11 @@ The Camera Feed Engine is a specialized service responsible for direct communica
 **External Dependencies**: Cameras
 
 **Message Handling**:
-- New Model is Generated: When a new model is generated, it becomes available for authorized users to upload to the camera. The Camera Feed Engine handles this process of uploading new model.
+- New Model is Generated: Makes a new version of AI model available to be uploaded to cameras by authorized users.
 
 **Message Generation**:
-- New Observation Captured: This event is generated when a camera captures a new observation.
-- New Camera Added: When a new camera is registered in the service, the Camera Feed Engine generates an event. This event ensures that the system remains up-to-date with the available camera resources.
+- New Observation Captured: When a new observation is fully loaded from the camera, it can be processed by other services.
+- New Camera Registered: When a new camera is registered in the service and can be used for notifications/configuration, etc.
 
 # Deployment/Development
 
