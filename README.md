@@ -189,7 +189,7 @@ sequenceDiagram
 
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 1
-    cam ->> serv: send an observation event
+    cam ->> serv: send an observation event 'entity=known'
     serv ->> serv: store event
   end
 
@@ -203,6 +203,37 @@ sequenceDiagram
 ```
 
 2. 3rd party success (camera doesn't identify species, user initiates 3rd party recognition)
+```mermaid
+sequenceDiagram
+  participant cam as Camera
+  participant serv as Server
+  participant lp as Labeling platform (Wildlife Insights)
+  participant ui as UI
+  actor u as User
+  autonumber
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of cam: 1
+    cam ->> serv: send an observation event 'entity=unknown'
+    serv ->> serv: store event
+  end
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of cam: 2
+    serv ->> lp: post the unknown entity to be labeled
+    lp -->> serv: get the labeled entity info
+  end
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of cam: 3
+    u ->> ui: visit events screen
+    ui ->> serv: get events
+    serv -->> ui: return events
+    ui -->> u: show events
+  end
+
+```
+
 3. iNaturalist success
 4. Admin initiates training
 5. ?Admin configure camera?
