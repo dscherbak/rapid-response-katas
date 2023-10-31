@@ -23,4 +23,4 @@ Developing and maintaining separate native apps for iOS and Android can be resou
 By choosing React Native for our iOS and Android client app, we anticipate reaping the benefits of cost-effectiveness, cross-platform compatibility, and an efficient development process. However, this decision does come with a potential learning curve for developers less familiar with React Native and its nuances.
 
 ## Status:
-Proposed
+Approved
