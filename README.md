@@ -174,3 +174,8 @@ The Camera Feed Engine represents a critical service within our architecture. It
 3. iNaturalist success
 4. Admin initiates training
 5. ?Admin configure camera?
+6. 
+
+## ADRs
+- [Monolith/Microservices](ADRs/3010-monolith-microservices.md)
+- [Sending a picture of captured species](ADRs/3010-sending-picture-of-captured-species.md)
