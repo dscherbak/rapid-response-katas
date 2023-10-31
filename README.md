@@ -40,3 +40,12 @@ overview...
 ### Long-term
   #### Platform
   - Implement a community forum or social features to connect enthusiasts.
+
+## Sequence diagrams 
+1. Camera success (camera identifies the species)
+2. 3rd party success (camera doesn't identify species, user initiates 3rd party recognition)
+3. iNaturalist success
+4. Admin initiates training
+5. ?Admin configure camera?
+
+
