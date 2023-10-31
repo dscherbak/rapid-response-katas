@@ -19,4 +19,4 @@ The decision to use JWT tokens to store camera permissions has several consequen
 * The Camera Feed Engine will need to decode the JWT token to determine whether the user is authorized to access the camera.
 
 ## Status
-Proposed
+Approved
