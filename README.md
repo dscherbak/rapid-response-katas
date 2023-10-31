@@ -190,15 +190,15 @@ sequenceDiagram
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 1
     cam ->> serv: send an observation event 'species=known'
-    serv ->> serv: store event
+    serv ->> serv: store the event
   end
 
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 2
     u ->> ui: visit events screen
-    ui ->> serv: get events
-    serv -->> ui: return events
-    ui -->> u: show events
+    ui ->> serv: get the events
+    serv -->> ui: return the events
+    ui -->> u: show the events
   end
 ```
 
@@ -215,7 +215,7 @@ sequenceDiagram
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 1
     cam ->> serv: send an observation event 'species=unknown'
-    serv ->> serv: store event
+    serv ->> serv: store the event
   end
 
   rect rgba(128, 255, 100, 0.1)
@@ -227,9 +227,9 @@ sequenceDiagram
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 3
     u ->> ui: visit events screen
-    ui ->> serv: get events
-    serv -->> ui: return events
-    ui -->> u: show events
+    ui ->> serv: get the events
+    serv -->> ui: return the events
+    ui -->> u: show the events
   end
 
 ```
@@ -248,25 +248,25 @@ sequenceDiagram
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 1
     cam ->> serv: send an observation event 'species=unknown'
-    serv ->> serv: store event
+    serv ->> serv: store the event
   end
 
   rect rgba(128, 255, 100, 0.1)
     note right of serv: 2
     u ->> ui: visit events screen
-    ui ->> serv: get events
-    serv -->> ui: return events
-    ui -->> u: show events
+    ui ->> serv: get the events
+    serv -->> ui: return the events
+    ui -->> u: show the events
   end
 
   rect rgba(128, 255, 100, 0.1)
     note right of nat: 3
-    u ->> nat: share observation
-    nat -->> u: identified species
+    u ->> nat: share the observation
+    nat -->> u: return an identified species
     u ->> ui: label the event
     ui ->> serv: label the event
-    serv -->> ui: return labelled event
-    ui -->> u: show labelled event
+    serv -->> ui: return the labelled event
+    ui -->> u: show the labelled event
   end
 ```
 
@@ -290,11 +290,11 @@ sequenceDiagram
 
   rect rgba(128, 255, 100, 0.1)
     note right of adm: 2
-    adm ->> ui: select labled observations for training
+    adm ->> ui: select the labled observations for training
     ui ->> serv: send the observations for training
-    serv ->> ml: post training samples
-    ml ->> ml: train model
-    ml -->> serv: return trained model
+    serv ->> ml: post the training samples
+    ml ->> ml: train a new model
+    ml -->> serv: return the trained model
     serv -->> ui: the training succeeded
     ui -->> adm: the trainng succeeded
   end
