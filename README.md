@@ -235,6 +235,40 @@ sequenceDiagram
 ```
 
 3. iNaturalist success
+```mermaid
+sequenceDiagram
+  participant nat as INaturalist
+  participant cam as Camera
+  participant serv as Server
+  participant ui as UI
+  actor u as User
+  autonumber
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of cam: 1
+    cam ->> serv: send an observation event 'entity=unknown'
+    serv ->> serv: store event
+  end
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of serv: 2
+    u ->> ui: visit events screen
+    ui ->> serv: get events
+    serv -->> ui: return events
+    ui -->> u: show events
+  end
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of nat: 3
+    u ->> ui: label an event
+    ui ->> serv: start labeling process
+    serv ->> nat: post the event to be labeled
+    nat -->> serv: get the labeled event
+    serv -->> ui: return labeled event
+    ui -->> u: show labeled event
+  end
+```
+
 4. Admin initiates training
 5. ?Admin configure camera?
 
