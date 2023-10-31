@@ -33,4 +33,4 @@ The decision to use messaging as the communication pattern between microservices
 * Monitoring and management of the message queue infrastructure will be necessary to ensure reliable operation.
 
 ## Status:
-Proposed
+Approved
