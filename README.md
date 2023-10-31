@@ -179,3 +179,9 @@ The Camera Feed Engine represents a critical service within our architecture. It
 ## ADRs
 - [Monolith/Microservices](ADRs/3010-monolith-microservices.md)
 - [Sending a picture of captured species](ADRs/3010-sending-picture-of-captured-species.md)
+- [Services Communication Pattern](ADRs/3010-services-communication.md)
+- [Mobile Apps Framework](ADRs/2910-mobile-apps-framework.md)
+- [Mobile Video/Image Processing](ADRs/2910-mobile-video-image-processing.md)
+- [Access permissions to cameras](ADRs/3010-access-permissions-to-cameras.md)
+- [Machine learning process](ADRs/3010-machine-learning.md)
+- [Export observations into the camptrap DB exchange format](ADRs/3010-export-observations.md)
