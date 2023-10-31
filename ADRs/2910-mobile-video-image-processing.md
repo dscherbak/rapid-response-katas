@@ -18,4 +18,4 @@ Both "react-native-video" and "react-native-video-processing" libraries are comp
 By using "react-native-video" and "react-native-image-picker"  in combination with other supporting libraries, we anticipate efficient image selection and image manipulation capabilities, resulting in a user-friendly and feature-rich photo processing experience. However, we must ensure that all libraries remain actively maintained and continue to meet our evolving project needs.
 
 ## Status:
-Proposed
+Approved
