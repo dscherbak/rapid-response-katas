@@ -14,8 +14,8 @@ Wildlife.ai, a charity using AI to accelerate wildlife conservation, wants to bu
 1. **Camera** - a Wildlife.ai device that records animals and uses AI to identify them.
 2. **AI Model** - a result of Machine Learning (ML) using services like TensorFlow, Roboflow, etc.
 3. **User** - biologists and nature enthusiasts.
-4. **Admin** - a user with extended permissions to camera management (like configuring camera settings, and uploading AI model/firmware).
-5. **Observation** - an event produced by the Camera of the captured movement.
+4. **Admin** - a user with extended permissions to camera management (like configuring camera settings and uploading AI model/firmware).
+5. **Observation** - an event produced by the camera of the captured movement.
 6. **Training Sample** - a video and(or) photo labeled and selected by Admin for ML.
 
 ## Functional requirements
@@ -28,8 +28,7 @@ Wildlife.ai, a charity using AI to accelerate wildlife conservation, wants to bu
   #### Users:
   - Users should be able to create accounts and log in securely.
   - Allow users to configure camera settings.
-  - Allow users to publish frames of observation to third-party services for experts to help with
-    the identification of the species (for example, iNaturalist).
+  - Allow users to publish frames of observation to third-party services for experts to help with the identification of the species (for example, iNaturalist).
   - Allow users to train AI models using training samples.
   - Allow users to export an observation event into the Camtrap DP data exchange format.
 
@@ -145,7 +144,7 @@ The ML Candidates Service is responsible for communication with external AI mode
 - New Training Samples are Ready: The service manages and generates new AI models based on new training samples.
 
 **Message Generation**:
-- New Trained AI Model: When the service successfully completes the training of a new AI model that can be uploaded to cameras.
+- New Trained AI Model: When the service completes the training of a new AI model that can be uploaded to cameras.
 
 ### Camera Feed Engine
 
@@ -202,7 +201,7 @@ sequenceDiagram
   end
 ```
 
-2. Unknown observation labled with labeling platforms (Wildlife Insights)
+2. Unknown observation labeled with labeling platforms (Wildlife Insights)
 ```mermaid
 sequenceDiagram
   participant cam as Camera
@@ -234,7 +233,7 @@ sequenceDiagram
 
 ```
 
-3. Unknown observation labled with iNaturalist
+3. Unknown observation labeled with iNaturalist
 ```mermaid
 sequenceDiagram
  
@@ -265,8 +264,8 @@ sequenceDiagram
     nat -->> u: return an identified species
     u ->> ui: label the event
     ui ->> serv: label the event
-    serv -->> ui: return the labelled event
-    ui -->> u: show the labelled event
+    serv -->> ui: return the labeled event
+    ui -->> u: show the labeled event
   end
 ```
 
@@ -276,27 +275,27 @@ sequenceDiagram
   actor adm as Admin
   participant ui as UI
   participant serv as Server
-  participant ml as Third party ML service
+  participant ml as a third-party ML service
   participant cam as Camera
   autonumber
 
   rect rgba(128, 255, 100, 0.1)
     note right of adm: 1
-    adm ->> ui: get labled observations
-    ui ->> serv: get labled observations
-    serv -->> ui: return the labled observations
-    ui -->> adm: return the labled observations
+    adm ->> ui: get labeled observations
+    ui ->> serv: get labeled observations
+    serv -->> ui: return the labeled observations
+    ui -->> adm: return the labeled observations
   end
 
   rect rgba(128, 255, 100, 0.1)
     note right of adm: 2
-    adm ->> ui: select the labled observations for training
+    adm ->> ui: select the labeled observations for training
     ui ->> serv: send the observations for training
     serv ->> ml: post the training samples
     ml ->> ml: train a new model
     ml -->> serv: return the trained model
     serv -->> ui: the training succeeded
-    ui -->> adm: the trainng succeeded
+    ui -->> adm: the training succeeded
   end
 
   rect rgba(128, 255, 100, 0.1)
