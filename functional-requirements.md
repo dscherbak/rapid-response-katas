@@ -18,12 +18,15 @@
     (Wildlife Insights, TrapTagger, or Trapper)
   - Focus on the scale of dozens of cameras and hundreds of users.
   - Consider open-source software and tools to minimize licensing costs.
+  - Design the system to handle a potential increase in users and data as the user base grows.
+
+### Mid-term
+  #### Platform
+  - Store user-captured images and videos securely.
+  - Integrate with mapping services to show the location of identified animals.
+  - Provide information on animal habitats.
+  - Store identification results locally (on the camera) and synchronize when online.
 
 ### Long-term
   #### Platform
-  - Design the system to handle a potential increase in users and data as the user base grows.
-  - Store user-captured images and videos securely.
   - Implement a community forum or social features to connect enthusiasts.
-  - Integrate with mapping services to show the location of identified animals.
-  - Provide information on animal habitats.
-  - Store identification results locally and synchronize when online.
