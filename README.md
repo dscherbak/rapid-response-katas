@@ -183,7 +183,7 @@ The Camera Feed Engine represents a critical service within our architecture. It
 sequenceDiagram
   participant cam as Camera
   participant serv as Server
-  participant ui as UI
+  participant ui as Mobile App
   actor u as User
   autonumber
 
@@ -208,7 +208,7 @@ sequenceDiagram
   participant cam as Camera
   participant serv as Server
   participant lp as Labeling platform (Wildlife Insights)
-  participant ui as UI
+  participant ui as Mobile App
   actor u as User
   autonumber
 
@@ -240,7 +240,7 @@ sequenceDiagram
   participant nat as INaturalist
   participant cam as Camera
   participant serv as Server
-  participant ui as UI
+  participant ui as Mobile App
   actor u as User
   autonumber
 
