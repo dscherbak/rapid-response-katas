@@ -14,6 +14,7 @@ overview...
   #### Camera:
   - The camera should be capable of capturing images or videos of animals.
   - The camera should be able to send a small event message with a photo of observed species.
+  - The camera should be able to send a heartbeat.
 
   #### Users:
   - Users should be able to create accounts and log in securely.
@@ -31,14 +32,18 @@ overview...
   - Design the system to handle a potential increase in users and data as the user base grows.
 
 ### Mid-term
-  #### Platform
+  ### Camera:
+  - The camera should be able to send metrics (e.g. SD card available space, network speed, battery charge level).
+  
+  #### Platform:
   - Store user-captured images and videos securely.
   - Integrate with mapping services to show the location of identified animals.
   - Provide information on animal habitats.
   - Store identification results locally (on the camera) and synchronize when online.
+  - Store and analyze metric events.
 
 ### Long-term
-  #### Platform
+  #### Platform:
   - Implement a community forum or social features to connect enthusiasts.
 
 ## Architecture Characteristics
