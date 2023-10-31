@@ -178,7 +178,7 @@ Based on the requirements (the small number of end users) five of our six micros
 The Camera Feed Engine represents a critical service within our architecture. It is designed to operate independently and is optimized for dynamic scaling based on various factors, such as the number of cameras available and the rates of messages delivered from cameras. This design ensures that this service can efficiently handle varying workloads while remaining separate from the monolithic setup.
 
 ## Sequence diagrams 
-1. Camera success (camera identifies the species)
+1. Camera successfully identifies species
 ```mermaid
 sequenceDiagram
   participant cam as Camera
@@ -202,7 +202,7 @@ sequenceDiagram
   end
 ```
 
-2. 3rd party success (camera doesn't identify species, user initiates 3rd party recognition)
+2. Unknown observation labled with labeling platforms (Wildlife Insights)
 ```mermaid
 sequenceDiagram
   participant cam as Camera
@@ -234,7 +234,7 @@ sequenceDiagram
 
 ```
 
-3. iNaturalist success
+3. Unknown observation labled with iNaturalist
 ```mermaid
 sequenceDiagram
  
@@ -270,8 +270,53 @@ sequenceDiagram
   end
 ```
 
-4. Admin initiates training
-5. ?Admin configure camera?
+4. Admin user initiates ML training
+```mermaid
+sequenceDiagram
+  actor adm as Admin
+  participant ui as UI
+  participant serv as Server
+  participant ml as Third party ML service
+  participant cam as Camera
+  autonumber
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of adm: 1
+    adm ->> ui: get labled observations
+    ui ->> serv: get labled observations
+    serv -->> ui: return the labled observations
+    ui -->> adm: return the labled observations
+  end
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of adm: 2
+    adm ->> ui: select labled observations for training
+    ui ->> serv: send the observations for training
+    serv ->> ml: post training samples
+    ml ->> ml: train model
+    ml -->> serv: return trained model
+    serv -->> ui: the training succeeded
+    ui -->> adm: the trainng succeeded
+  end
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of adm: 3
+    adm ->> ui: get trained models
+    ui ->> serv: get trained models
+    serv -->> ui: return the trained models
+    ui -->> adm: return the trained models
+  end
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of adm: 4
+    adm ->> ui: select a trained model to deploy to a camera
+    ui ->> serv: deploy the trained model request
+    serv ->> cam: deploy the trained model
+    cam -->> serv: the deployment succeeded
+    serv -->> ui: the deployment succeeded
+    ui -->> adm: the deployment succeeded
+  end
+```
 
 ## ADRs
 - [Monolith/Microservices](ADRs/3010-monolith-microservices.md)
