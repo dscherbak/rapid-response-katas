@@ -1,5 +1,13 @@
 # Wildlife Watcher System
-overview...
+This repository is an implementation of the 2023 O'Reilly Architectural Kata.
+
+Team:
+- Ruslan Kachmar
+- Stanislav Cheban
+- Dmytro Shcherbak
+
+
+Wildlife.ai, a charity using AI to accelerate wildlife conservation, wants to build an open-source wildlife camera that gets triggered based on the movement of target animals, identifies the species on the device, and reports the observation in near real-time to biologists, enabling more efficient species conservation efforts worldwide.
 
 ## Glossary
 1. **Camera** - a Wildlife.ai device that records animals and uses AI to identify them.
@@ -174,7 +182,6 @@ The Camera Feed Engine represents a critical service within our architecture. It
 3. iNaturalist success
 4. Admin initiates training
 5. ?Admin configure camera?
-6. 
 
 ## ADRs
 - [Monolith/Microservices](ADRs/3010-monolith-microservices.md)
