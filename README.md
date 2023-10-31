@@ -179,6 +179,29 @@ The Camera Feed Engine represents a critical service within our architecture. It
 
 ## Sequence diagrams 
 1. Camera success (camera identifies the species)
+```mermaid
+sequenceDiagram
+  participant cam as Camera
+  participant serv as Server
+  participant ui as UI
+  actor u as User
+  autonumber
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of cam: 1
+    cam ->> serv: send an observation event
+    serv ->> serv: store event
+  end
+
+  rect rgba(128, 255, 100, 0.1)
+    note right of cam: 2
+    u ->> ui: visit events screen
+    ui ->> serv: get events
+    serv -->> ui: return events
+    ui -->> u: show events
+  end
+```
+
 2. 3rd party success (camera doesn't identify species, user initiates 3rd party recognition)
 3. iNaturalist success
 4. Admin initiates training
