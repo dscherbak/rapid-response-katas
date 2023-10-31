@@ -189,7 +189,7 @@ sequenceDiagram
 
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 1
-    cam ->> serv: send an observation event 'entity=known'
+    cam ->> serv: send an observation event 'species=known'
     serv ->> serv: store event
   end
 
@@ -214,14 +214,14 @@ sequenceDiagram
 
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 1
-    cam ->> serv: send an observation event 'entity=unknown'
+    cam ->> serv: send an observation event 'species=unknown'
     serv ->> serv: store event
   end
 
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 2
-    serv ->> lp: post the unknown entity to be labeled
-    lp -->> serv: get the labeled entity info
+    serv ->> lp: post the unknown species to be labeled
+    lp -->> serv: get the labeled species info
   end
 
   rect rgba(128, 255, 100, 0.1)
@@ -237,16 +237,17 @@ sequenceDiagram
 3. iNaturalist success
 ```mermaid
 sequenceDiagram
-  participant nat as INaturalist
+ 
   participant cam as Camera
   participant serv as Server
   participant ui as Mobile App
   actor u as User
+  participant nat as INaturalist
   autonumber
 
   rect rgba(128, 255, 100, 0.1)
     note right of cam: 1
-    cam ->> serv: send an observation event 'entity=unknown'
+    cam ->> serv: send an observation event 'species=unknown'
     serv ->> serv: store event
   end
 
@@ -260,12 +261,12 @@ sequenceDiagram
 
   rect rgba(128, 255, 100, 0.1)
     note right of nat: 3
-    u ->> ui: label an event
-    ui ->> serv: start labeling process
-    serv ->> nat: post the event to be labeled
-    nat -->> serv: get the labeled event
-    serv -->> ui: return labeled event
-    ui -->> u: show labeled event
+    u ->> nat: share observation
+    nat -->> u: identified species
+    u ->> ui: label the event
+    ui ->> serv: label the event
+    serv -->> ui: return labelled event
+    ui -->> u: show labelled event
   end
 ```
 
