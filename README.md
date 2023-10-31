@@ -9,13 +9,6 @@ overview...
 5. **Observation** - an event produced by the Camera of the captured movement.
 6. **Training Sample** - a video and(or) photo labeled and selected by Admin for ML.
 
-## Sequence diagrams 
-1. Camera success (camera identifies the species)
-2. 3rd party success (camera doesn't identify species, user initiates 3rd party recognition)
-3. iNaturalist success
-4. Admin initiates training
-5. ?Admin configure camera?
-
 ## Functional requirements
 ### Short-term
   #### Camera:
@@ -169,3 +162,10 @@ Based on the requirements (the small number of end users) five of our six micros
 </p>
 
 The Camera Feed Engine represents a critical service within our architecture. It is designed to operate independently and is optimized for dynamic scaling based on various factors, such as the number of cameras available and the rates of messages delivered from cameras. This design ensures that this service can efficiently handle varying workloads while remaining separate from the monolithic setup.
+
+## Sequence diagrams 
+1. Camera success (camera identifies the species)
+2. 3rd party success (camera doesn't identify species, user initiates 3rd party recognition)
+3. iNaturalist success
+4. Admin initiates training
+5. ?Admin configure camera?
