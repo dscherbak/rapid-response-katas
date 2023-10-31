@@ -11,7 +11,7 @@ The Identity Service is responsible for managing user identity and authenticatio
 **External Dependencies**: None
 
 **Message Handling**:
-- Camera Registration Messages: The service handles camera registration messages, which provide camera information. Administrators use this information to grant user access to specific cameras.
+- Camera Registration Messages: The service handles camera registration messages, which provide camera information. Administrators use this information to grant users access to specific cameras.
 
 **Message Generation**:
 - New User Registration Message: The Identity Service generates a message when a new user is registered.
@@ -75,7 +75,7 @@ The Camera Feed Engine is a specialized service responsible for direct communica
 **External Dependencies**: Cameras
 
 **Message Handling**:
-- New Model is Generated: Makes a new version of AI model available to be uploaded to cameras by authorized users.
+- New Model is Generated: Makes a new version of the AI model available to be uploaded to cameras by authorized users.
 
 **Message Generation**:
 - New Observation Captured: When a new observation is fully loaded from the camera, it can be processed by other services.
@@ -83,7 +83,7 @@ The Camera Feed Engine is a specialized service responsible for direct communica
 
 # Deployment/Development
 
-The architecture let us scale, maintain, and evolve individual services with ease. However, our approach goes beyond the conventional microservices model.
+The architecture lets us scale, maintain, and evolve individual services with ease. However, our approach goes beyond the conventional microservices model.
 
 <p align="center">
     <img src="images/separate.png" alt="image" width="600" height="auto">
