@@ -39,7 +39,7 @@ The feature that allows enabling/disabling image transmission for identified spe
 
 ## Consequences:
 
-Sending images along with the observation message will enhance species detection and enable users to respond more faster to new findings. This feature can be enabled for cameras in locations with a 'normal' network connection, ensuring that it won't impact the transmission of identified species in areas with a 'poor' connection.
+Sending images along with the observation message will enhance species detection and enable users to respond faster to new findings. This feature can be enabled for cameras in locations with a 'normal' network connection, ensuring that it won't impact the transmission of identified species in areas with a 'poor' connection.
 
 ## Status:
 
