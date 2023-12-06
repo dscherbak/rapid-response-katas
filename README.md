@@ -1,6 +1,8 @@
 # Wildlife Watcher System
 This repository is an implementation of the 2023 O'Reilly Architectural Kata.
 
+<img src="images/289752_Katas_Place_Badge_Second.png" width="150">
+
 Team:
 - Ruslan Kachmar
 - Stanislav Cheban
